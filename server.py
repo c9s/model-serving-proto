@@ -30,6 +30,8 @@ class ObjectDetectionServicer(serving_pb2_grpc.ObjectDetectionServicer):
         pass
     def Detect(self, request, context):
         img = load_image_ndarray(request.image)
+        rect = serving_pb2.Rectangle(x=0, y=0, width=100, height=100)
+        yield serving_pb2.Object(label="Person", rect=rect)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
