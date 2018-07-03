@@ -1,7 +1,7 @@
 // vim:sw=2:ts=2:sts=2:
 syntax = "proto3";
 
-package inference;
+package serving;
 
 message DetectionResponse {
   string type = 1;

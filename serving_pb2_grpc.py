@@ -15,7 +15,7 @@ class ShapeDetectionStub(object):
       channel: A grpc.Channel.
     """
     self.Detect = channel.unary_unary(
-        '/inference.ShapeDetection/Detect',
+        '/serving.ShapeDetection/Detect',
         request_serializer=serving__pb2.DetectionRequest.SerializeToString,
         response_deserializer=serving__pb2.DetectionResponse.FromString,
         )
@@ -42,7 +42,7 @@ def add_ShapeDetectionServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'inference.ShapeDetection', rpc_method_handlers)
+      'serving.ShapeDetection', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -57,7 +57,7 @@ class ObjectDetectionStub(object):
       channel: A grpc.Channel.
     """
     self.Detect = channel.unary_stream(
-        '/inference.ObjectDetection/Detect',
+        '/serving.ObjectDetection/Detect',
         request_serializer=serving__pb2.DetectionRequest.SerializeToString,
         response_deserializer=serving__pb2.Object.FromString,
         )
@@ -84,5 +84,5 @@ def add_ObjectDetectionServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'inference.ObjectDetection', rpc_method_handlers)
+      'serving.ObjectDetection', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
