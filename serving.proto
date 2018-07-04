@@ -42,8 +42,14 @@ message Region {
   int32 height = 4;
 }
 
+message Shape {
+  string contentType = 1;
+  // this field will be used when contentType == "polygon"
+  repeated Point polygon = 2;
+}
+
 message Object {
   string label = 1;
   Rectangle rect = 2;
+  Shape shape = 3;
 }
-
