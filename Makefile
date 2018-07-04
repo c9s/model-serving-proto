@@ -2,6 +2,8 @@ PROTOS := $(wildcard *.proto)
 PY_PROTOS := $(PROTOS:.proto=_pb2.py)
 GO_PROTOS := $(PROTOS:.proto=.pb.go)
 
+all: $(PY_PROTOS) $(GO_PROTOS)
+
 deps:
 	go get github.com/golang/protobuf/protoc-gen-go
 
@@ -11,7 +13,6 @@ deps:
 %.pb.go: %.proto deps
 	protoc $< --go_out=plugins=grpc:.
 
-all: $(PY_PROTOS) $(GO_PROTOS)
-
 clean:
 	rm -rf $(PY_PROTOS) $(GO_PROTOS)
+
