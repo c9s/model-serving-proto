@@ -18,15 +18,15 @@ go: $(GO_PROTO_FILES)
 
 cpp: $(CPP_PROTO_FILES)
 
-deps:
+protoc-gen-go:
 	go get github.com/golang/protobuf/protoc-gen-go
 
 vpath %.proto
 
-%_pb2.py: %.proto deps
+%_pb2.py: %.proto
 	python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. $<
 
-%.pb.go: %.proto deps
+%.pb.go: %.proto protoc-gen-go
 	$(PROTOC) $< --go_out=plugins=grpc:.
 
 %.grpc.pb.cc: %.proto
@@ -38,4 +38,4 @@ vpath %.proto
 clean:
 	rm -rf $(ALL_PROTO_FILES)
 
-.phony: py go cpp deps
+.phony: py go cpp
