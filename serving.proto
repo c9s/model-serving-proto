@@ -44,8 +44,12 @@ message Region {
 
 message Shape {
   string contentType = 1;
-  // this field will be used when contentType == "polygon"
-  repeated Point polygon = 2;
+
+  // this field will be used when contentType == "polygon/points"
+  repeated Point points = 2;
+
+  // this field will be used when contentType == "polygon/series"
+  repeated int32 series = 3;
 }
 
 message Object {
