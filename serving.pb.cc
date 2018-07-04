@@ -229,7 +229,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::serving::DetectionRequest, image_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::serving::DetectionRequest, rect_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::serving::DetectionRequest, region_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::serving::Point, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -318,26 +318,26 @@ void AddDescriptorsImpl() {
       "sponse\022\014\n\004type\030\001 \001(\t\022\036\n\006points\030\002 \003(\0132\016.s"
       "erving.Point\022 \n\007objects\030\003 \003(\0132\017.serving."
       "Object\022&\n\nrectangles\030\004 \003(\0132\022.serving.Rec"
-      "tangle\"C\n\020DetectionRequest\022\r\n\005image\030\001 \001("
-      "\014\022 \n\004rect\030\002 \001(\0132\022.serving.Rectangle\"\035\n\005P"
-      "oint\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"@\n\tRectangle\022"
-      "\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\r\n\005width\030\003 \001(\005\022\016\n\006"
-      "height\030\004 \001(\005\"=\n\006Region\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002"
-      " \001(\005\022\r\n\005width\030\003 \001(\005\022\016\n\006height\030\004 \001(\005\"L\n\005S"
-      "hape\022\023\n\013contentType\030\001 \001(\t\022\036\n\006points\030\002 \003("
-      "\0132\016.serving.Point\022\016\n\006series\030\003 \003(\005\"W\n\006Obj"
-      "ect\022\r\n\005label\030\001 \001(\t\022\037\n\003box\030\002 \001(\0132\022.servin"
-      "g.Rectangle\022\035\n\005shape\030\003 \001(\0132\016.serving.Sha"
-      "pe2S\n\016ShapeDetection\022A\n\006Detect\022\031.serving"
-      ".DetectionRequest\032\032.serving.DetectionRes"
-      "ponse\"\0002\224\001\n\017ObjectDetection\022>\n\014DetectStr"
-      "eam\022\031.serving.DetectionRequest\032\017.serving"
-      ".Object\"\0000\001\022A\n\006Detect\022\031.serving.Detectio"
-      "nRequest\032\032.serving.DetectionResponse\"\000b\006"
-      "proto3"
+      "tangle\"E\n\020DetectionRequest\022\r\n\005image\030\001 \001("
+      "\014\022\"\n\006region\030\002 \001(\0132\022.serving.Rectangle\"\035\n"
+      "\005Point\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"@\n\tRectangl"
+      "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\r\n\005width\030\003 \001(\005\022\016"
+      "\n\006height\030\004 \001(\005\"=\n\006Region\022\t\n\001x\030\001 \001(\005\022\t\n\001y"
+      "\030\002 \001(\005\022\r\n\005width\030\003 \001(\005\022\016\n\006height\030\004 \001(\005\"L\n"
+      "\005Shape\022\023\n\013contentType\030\001 \001(\t\022\036\n\006points\030\002 "
+      "\003(\0132\016.serving.Point\022\016\n\006series\030\003 \003(\005\"W\n\006O"
+      "bject\022\r\n\005label\030\001 \001(\t\022\037\n\003box\030\002 \001(\0132\022.serv"
+      "ing.Rectangle\022\035\n\005shape\030\003 \001(\0132\016.serving.S"
+      "hape2S\n\016ShapeDetection\022A\n\006Detect\022\031.servi"
+      "ng.DetectionRequest\032\032.serving.DetectionR"
+      "esponse\"\0002\224\001\n\017ObjectDetection\022>\n\014DetectS"
+      "tream\022\031.serving.DetectionRequest\032\017.servi"
+      "ng.Object\"\0000\001\022A\n\006Detect\022\031.serving.Detect"
+      "ionRequest\032\032.serving.DetectionResponse\"\000"
+      "b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 806);
+      descriptor, 808);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "serving.proto", &protobuf_RegisterTypes);
 }
@@ -740,12 +740,12 @@ void DetectionResponse::InternalSwap(DetectionResponse* other) {
 // ===================================================================
 
 void DetectionRequest::InitAsDefaultInstance() {
-  ::serving::_DetectionRequest_default_instance_._instance.get_mutable()->rect_ = const_cast< ::serving::Rectangle*>(
+  ::serving::_DetectionRequest_default_instance_._instance.get_mutable()->region_ = const_cast< ::serving::Rectangle*>(
       ::serving::Rectangle::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int DetectionRequest::kImageFieldNumber;
-const int DetectionRequest::kRectFieldNumber;
+const int DetectionRequest::kRegionFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 DetectionRequest::DetectionRequest()
@@ -765,17 +765,17 @@ DetectionRequest::DetectionRequest(const DetectionRequest& from)
   if (from.image().size() > 0) {
     image_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.image_);
   }
-  if (from.has_rect()) {
-    rect_ = new ::serving::Rectangle(*from.rect_);
+  if (from.has_region()) {
+    region_ = new ::serving::Rectangle(*from.region_);
   } else {
-    rect_ = NULL;
+    region_ = NULL;
   }
   // @@protoc_insertion_point(copy_constructor:serving.DetectionRequest)
 }
 
 void DetectionRequest::SharedCtor() {
   image_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  rect_ = NULL;
+  region_ = NULL;
   _cached_size_ = 0;
 }
 
@@ -786,7 +786,7 @@ DetectionRequest::~DetectionRequest() {
 
 void DetectionRequest::SharedDtor() {
   image_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete rect_;
+  if (this != internal_default_instance()) delete region_;
 }
 
 void DetectionRequest::SetCachedSize(int size) const {
@@ -819,10 +819,10 @@ void DetectionRequest::Clear() {
   (void) cached_has_bits;
 
   image_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && rect_ != NULL) {
-    delete rect_;
+  if (GetArenaNoVirtual() == NULL && region_ != NULL) {
+    delete region_;
   }
-  rect_ = NULL;
+  region_ = NULL;
   _internal_metadata_.Clear();
 }
 
@@ -848,12 +848,12 @@ bool DetectionRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // .serving.Rectangle rect = 2;
+      // .serving.Rectangle region = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_rect()));
+               input, mutable_region()));
         } else {
           goto handle_unusual;
         }
@@ -892,10 +892,10 @@ void DetectionRequest::SerializeWithCachedSizes(
       1, this->image(), output);
   }
 
-  // .serving.Rectangle rect = 2;
-  if (this->has_rect()) {
+  // .serving.Rectangle region = 2;
+  if (this->has_region()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->rect_, output);
+      2, *this->region_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -919,11 +919,11 @@ void DetectionRequest::SerializeWithCachedSizes(
         1, this->image(), target);
   }
 
-  // .serving.Rectangle rect = 2;
-  if (this->has_rect()) {
+  // .serving.Rectangle region = 2;
+  if (this->has_region()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, *this->rect_, deterministic, target);
+        2, *this->region_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -950,11 +950,11 @@ size_t DetectionRequest::ByteSizeLong() const {
         this->image());
   }
 
-  // .serving.Rectangle rect = 2;
-  if (this->has_rect()) {
+  // .serving.Rectangle region = 2;
+  if (this->has_region()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *this->rect_);
+        *this->region_);
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -990,8 +990,8 @@ void DetectionRequest::MergeFrom(const DetectionRequest& from) {
 
     image_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.image_);
   }
-  if (from.has_rect()) {
-    mutable_rect()->::serving::Rectangle::MergeFrom(from.rect());
+  if (from.has_region()) {
+    mutable_region()->::serving::Rectangle::MergeFrom(from.region());
   }
 }
 
@@ -1020,7 +1020,7 @@ void DetectionRequest::Swap(DetectionRequest* other) {
 void DetectionRequest::InternalSwap(DetectionRequest* other) {
   using std::swap;
   image_.Swap(&other->image_);
-  swap(rect_, other->rect_);
+  swap(region_, other->region_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }

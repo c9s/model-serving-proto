@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='serving.proto',
   package='serving',
   syntax='proto3',
-  serialized_pb=_b('\n\rserving.proto\x12\x07serving\"\x8b\x01\n\x11\x44\x65tectionResponse\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x1e\n\x06points\x18\x02 \x03(\x0b\x32\x0e.serving.Point\x12 \n\x07objects\x18\x03 \x03(\x0b\x32\x0f.serving.Object\x12&\n\nrectangles\x18\x04 \x03(\x0b\x32\x12.serving.Rectangle\"C\n\x10\x44\x65tectionRequest\x12\r\n\x05image\x18\x01 \x01(\x0c\x12 \n\x04rect\x18\x02 \x01(\x0b\x32\x12.serving.Rectangle\"\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"@\n\tRectangle\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\x12\r\n\x05width\x18\x03 \x01(\x05\x12\x0e\n\x06height\x18\x04 \x01(\x05\"=\n\x06Region\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\x12\r\n\x05width\x18\x03 \x01(\x05\x12\x0e\n\x06height\x18\x04 \x01(\x05\"L\n\x05Shape\x12\x13\n\x0b\x63ontentType\x18\x01 \x01(\t\x12\x1e\n\x06points\x18\x02 \x03(\x0b\x32\x0e.serving.Point\x12\x0e\n\x06series\x18\x03 \x03(\x05\"W\n\x06Object\x12\r\n\x05label\x18\x01 \x01(\t\x12\x1f\n\x03\x62ox\x18\x02 \x01(\x0b\x32\x12.serving.Rectangle\x12\x1d\n\x05shape\x18\x03 \x01(\x0b\x32\x0e.serving.Shape2S\n\x0eShapeDetection\x12\x41\n\x06\x44\x65tect\x12\x19.serving.DetectionRequest\x1a\x1a.serving.DetectionResponse\"\x00\x32\x94\x01\n\x0fObjectDetection\x12>\n\x0c\x44\x65tectStream\x12\x19.serving.DetectionRequest\x1a\x0f.serving.Object\"\x00\x30\x01\x12\x41\n\x06\x44\x65tect\x12\x19.serving.DetectionRequest\x1a\x1a.serving.DetectionResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\rserving.proto\x12\x07serving\"\x8b\x01\n\x11\x44\x65tectionResponse\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x1e\n\x06points\x18\x02 \x03(\x0b\x32\x0e.serving.Point\x12 \n\x07objects\x18\x03 \x03(\x0b\x32\x0f.serving.Object\x12&\n\nrectangles\x18\x04 \x03(\x0b\x32\x12.serving.Rectangle\"E\n\x10\x44\x65tectionRequest\x12\r\n\x05image\x18\x01 \x01(\x0c\x12\"\n\x06region\x18\x02 \x01(\x0b\x32\x12.serving.Rectangle\"\x1d\n\x05Point\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"@\n\tRectangle\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\x12\r\n\x05width\x18\x03 \x01(\x05\x12\x0e\n\x06height\x18\x04 \x01(\x05\"=\n\x06Region\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\x12\r\n\x05width\x18\x03 \x01(\x05\x12\x0e\n\x06height\x18\x04 \x01(\x05\"L\n\x05Shape\x12\x13\n\x0b\x63ontentType\x18\x01 \x01(\t\x12\x1e\n\x06points\x18\x02 \x03(\x0b\x32\x0e.serving.Point\x12\x0e\n\x06series\x18\x03 \x03(\x05\"W\n\x06Object\x12\r\n\x05label\x18\x01 \x01(\t\x12\x1f\n\x03\x62ox\x18\x02 \x01(\x0b\x32\x12.serving.Rectangle\x12\x1d\n\x05shape\x18\x03 \x01(\x0b\x32\x0e.serving.Shape2S\n\x0eShapeDetection\x12\x41\n\x06\x44\x65tect\x12\x19.serving.DetectionRequest\x1a\x1a.serving.DetectionResponse\"\x00\x32\x94\x01\n\x0fObjectDetection\x12>\n\x0c\x44\x65tectStream\x12\x19.serving.DetectionRequest\x1a\x0f.serving.Object\"\x00\x30\x01\x12\x41\n\x06\x44\x65tect\x12\x19.serving.DetectionRequest\x1a\x1a.serving.DetectionResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -92,7 +92,7 @@ _DETECTIONREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='rect', full_name='serving.DetectionRequest.rect', index=1,
+      name='region', full_name='serving.DetectionRequest.region', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -111,7 +111,7 @@ _DETECTIONREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=168,
-  serialized_end=235,
+  serialized_end=237,
 )
 
 
@@ -148,8 +148,8 @@ _POINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=237,
-  serialized_end=266,
+  serialized_start=239,
+  serialized_end=268,
 )
 
 
@@ -200,8 +200,8 @@ _RECTANGLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=268,
-  serialized_end=332,
+  serialized_start=270,
+  serialized_end=334,
 )
 
 
@@ -252,8 +252,8 @@ _REGION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=334,
-  serialized_end=395,
+  serialized_start=336,
+  serialized_end=397,
 )
 
 
@@ -297,8 +297,8 @@ _SHAPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=397,
-  serialized_end=473,
+  serialized_start=399,
+  serialized_end=475,
 )
 
 
@@ -342,14 +342,14 @@ _OBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=562,
+  serialized_start=477,
+  serialized_end=564,
 )
 
 _DETECTIONRESPONSE.fields_by_name['points'].message_type = _POINT
 _DETECTIONRESPONSE.fields_by_name['objects'].message_type = _OBJECT
 _DETECTIONRESPONSE.fields_by_name['rectangles'].message_type = _RECTANGLE
-_DETECTIONREQUEST.fields_by_name['rect'].message_type = _RECTANGLE
+_DETECTIONREQUEST.fields_by_name['region'].message_type = _RECTANGLE
 _SHAPE.fields_by_name['points'].message_type = _POINT
 _OBJECT.fields_by_name['box'].message_type = _RECTANGLE
 _OBJECT.fields_by_name['shape'].message_type = _SHAPE
@@ -419,8 +419,8 @@ _SHAPEDETECTION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=564,
-  serialized_end=647,
+  serialized_start=566,
+  serialized_end=649,
   methods=[
   _descriptor.MethodDescriptor(
     name='Detect',
@@ -443,8 +443,8 @@ _OBJECTDETECTION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=650,
-  serialized_end=798,
+  serialized_start=652,
+  serialized_end=800,
   methods=[
   _descriptor.MethodDescriptor(
     name='DetectStream',

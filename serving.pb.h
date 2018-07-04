@@ -335,21 +335,21 @@ class DetectionRequest : public ::google::protobuf::Message /* @@protoc_insertio
   ::std::string* release_image();
   void set_allocated_image(::std::string* image);
 
-  // .serving.Rectangle rect = 2;
-  bool has_rect() const;
-  void clear_rect();
-  static const int kRectFieldNumber = 2;
-  const ::serving::Rectangle& rect() const;
-  ::serving::Rectangle* release_rect();
-  ::serving::Rectangle* mutable_rect();
-  void set_allocated_rect(::serving::Rectangle* rect);
+  // .serving.Rectangle region = 2;
+  bool has_region() const;
+  void clear_region();
+  static const int kRegionFieldNumber = 2;
+  const ::serving::Rectangle& region() const;
+  ::serving::Rectangle* release_region();
+  ::serving::Rectangle* mutable_region();
+  void set_allocated_region(::serving::Rectangle* region);
 
   // @@protoc_insertion_point(class_scope:serving.DetectionRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr image_;
-  ::serving::Rectangle* rect_;
+  ::serving::Rectangle* region_;
   mutable int _cached_size_;
   friend struct ::protobuf_serving_2eproto::TableStruct;
   friend void ::protobuf_serving_2eproto::InitDefaultsDetectionRequestImpl();
@@ -1172,54 +1172,54 @@ inline void DetectionRequest::set_allocated_image(::std::string* image) {
   // @@protoc_insertion_point(field_set_allocated:serving.DetectionRequest.image)
 }
 
-// .serving.Rectangle rect = 2;
-inline bool DetectionRequest::has_rect() const {
-  return this != internal_default_instance() && rect_ != NULL;
+// .serving.Rectangle region = 2;
+inline bool DetectionRequest::has_region() const {
+  return this != internal_default_instance() && region_ != NULL;
 }
-inline void DetectionRequest::clear_rect() {
-  if (GetArenaNoVirtual() == NULL && rect_ != NULL) {
-    delete rect_;
+inline void DetectionRequest::clear_region() {
+  if (GetArenaNoVirtual() == NULL && region_ != NULL) {
+    delete region_;
   }
-  rect_ = NULL;
+  region_ = NULL;
 }
-inline const ::serving::Rectangle& DetectionRequest::rect() const {
-  const ::serving::Rectangle* p = rect_;
-  // @@protoc_insertion_point(field_get:serving.DetectionRequest.rect)
+inline const ::serving::Rectangle& DetectionRequest::region() const {
+  const ::serving::Rectangle* p = region_;
+  // @@protoc_insertion_point(field_get:serving.DetectionRequest.region)
   return p != NULL ? *p : *reinterpret_cast<const ::serving::Rectangle*>(
       &::serving::_Rectangle_default_instance_);
 }
-inline ::serving::Rectangle* DetectionRequest::release_rect() {
-  // @@protoc_insertion_point(field_release:serving.DetectionRequest.rect)
+inline ::serving::Rectangle* DetectionRequest::release_region() {
+  // @@protoc_insertion_point(field_release:serving.DetectionRequest.region)
   
-  ::serving::Rectangle* temp = rect_;
-  rect_ = NULL;
+  ::serving::Rectangle* temp = region_;
+  region_ = NULL;
   return temp;
 }
-inline ::serving::Rectangle* DetectionRequest::mutable_rect() {
+inline ::serving::Rectangle* DetectionRequest::mutable_region() {
   
-  if (rect_ == NULL) {
-    rect_ = new ::serving::Rectangle;
+  if (region_ == NULL) {
+    region_ = new ::serving::Rectangle;
   }
-  // @@protoc_insertion_point(field_mutable:serving.DetectionRequest.rect)
-  return rect_;
+  // @@protoc_insertion_point(field_mutable:serving.DetectionRequest.region)
+  return region_;
 }
-inline void DetectionRequest::set_allocated_rect(::serving::Rectangle* rect) {
+inline void DetectionRequest::set_allocated_region(::serving::Rectangle* region) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
-    delete rect_;
+    delete region_;
   }
-  if (rect) {
+  if (region) {
     ::google::protobuf::Arena* submessage_arena = NULL;
     if (message_arena != submessage_arena) {
-      rect = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, rect, submessage_arena);
+      region = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, region, submessage_arena);
     }
     
   } else {
     
   }
-  rect_ = rect;
-  // @@protoc_insertion_point(field_set_allocated:serving.DetectionRequest.rect)
+  region_ = region;
+  // @@protoc_insertion_point(field_set_allocated:serving.DetectionRequest.region)
 }
 
 // -------------------------------------------------------------------
