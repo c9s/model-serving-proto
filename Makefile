@@ -21,12 +21,18 @@ cpp: $(CPP_PROTO_FILES)
 protoc-gen-go:
 	go get github.com/golang/protobuf/protoc-gen-go
 
+grpcio-tools:
+	python -m pip install grpcio-tools googleapis-common-proto
+
+deps: grpcio-tools protoc-gen-go
+
 vpath %.proto
 
 %_pb2.py: %.proto
+	# $(PROTOC) -I. --python_out=. --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
 	python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. $<
 
-%.pb.go: %.proto protoc-gen-go
+%.pb.go: %.proto
 	$(PROTOC) $< --go_out=plugins=grpc:.
 
 %.grpc.pb.cc: %.proto
