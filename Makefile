@@ -2,16 +2,21 @@ PROTOC = protoc
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
 GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 
-
 PROTOS := $(wildcard *.proto)
-PY_PROTOS := $(PROTOS:.proto=_pb2.py)
-GO_PROTOS := $(PROTOS:.proto=.pb.go)
-CPP_PROTOS := $(PROTOS:.proto=.pb.cc)
-CPP_GRPC_PROTOS := $(PROTOS:.proto=.grpc.pb.cc)
+PY_PROTO_FILES := $(PROTOS:.proto=_pb2.py)
+GO_PROTO_FILES := $(PROTOS:.proto=.pb.go)
+CPP_PROTO_FILES := $(PROTOS:.proto=.pb.cc)
+CPP_GRPC_PROTO_FILES := $(PROTOS:.proto=.grpc.pb.cc)
 
-PROTO_GEN_FILES := $(PY_PROTOS) $(GO_PROTOS) $(CPP_PROTOS) $(CPP_GRPC_PROTOS)
+ALL_PROTO_FILES := $(PY_PROTO_FILES) $(GO_PROTO_FILES) $(CPP_PROTO_FILES) $(CPP_GRPC_PROTO_FILES)
 
-all: $(PROTO_GEN_FILES)
+all: $(ALL_PROTO_FILES)
+
+py: $(PY_PROTO_FILES)
+
+go: $(GO_PROTO_FILES)
+
+cpp: $(CPP_PROTO_FILES)
 
 deps:
 	go get github.com/golang/protobuf/protoc-gen-go
@@ -31,4 +36,6 @@ vpath %.proto
 	$(PROTOC) -I. --cpp_out=. $<
 
 clean:
-	rm -rf $(PROTO_GEN_FILES)
+	rm -rf $(ALL_PROTO_FILES)
+
+.phony: py go cpp deps
