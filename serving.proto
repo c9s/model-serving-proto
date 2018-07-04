@@ -50,6 +50,6 @@ message Shape {
 
 message Object {
   string label = 1;
-  Rectangle rect = 2;
+  Rectangle box = 2;
   Shape shape = 3;
 }
