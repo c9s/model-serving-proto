@@ -4,7 +4,10 @@ GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 
 PROTOS := $(wildcard *.proto)
 PY_PROTO_FILES := $(PROTOS:.proto=_pb2.py)
+
 GO_PROTO_FILES := $(PROTOS:.proto=.pb.go)
+GO_PROTO_FILES := $(addprefix go/,$(GO_PROTO_FILES))
+
 CPP_PROTO_FILES := $(PROTOS:.proto=.pb.cc)
 CPP_GRPC_PROTO_FILES := $(PROTOS:.proto=.grpc.pb.cc)
 
@@ -32,8 +35,9 @@ vpath %.proto
 	# $(PROTOC) -I. --python_out=. --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
 	python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. $<
 
-%.pb.go: %.proto
-	$(PROTOC) $< --go_out=plugins=grpc:.
+go/%.pb.go: %.proto
+	mkdir -p go
+	$(PROTOC) $< --go_out=plugins=grpc:go/
 
 %.grpc.pb.cc: %.proto
 	$(PROTOC) -I. --grpc_out=. --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
