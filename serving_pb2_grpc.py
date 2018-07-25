@@ -56,10 +56,10 @@ class ObjectDetectionStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.DetectStream = channel.unary_stream(
+    self.DetectStream = channel.stream_stream(
         '/serving.ObjectDetection/DetectStream',
         request_serializer=serving__pb2.DetectionRequest.SerializeToString,
-        response_deserializer=serving__pb2.Object.FromString,
+        response_deserializer=serving__pb2.DetectionResponse.FromString,
         )
     self.Detect = channel.unary_unary(
         '/serving.ObjectDetection/Detect',
@@ -72,7 +72,7 @@ class ObjectDetectionServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
-  def DetectStream(self, request, context):
+  def DetectStream(self, request_iterator, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -89,10 +89,10 @@ class ObjectDetectionServicer(object):
 
 def add_ObjectDetectionServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'DetectStream': grpc.unary_stream_rpc_method_handler(
+      'DetectStream': grpc.stream_stream_rpc_method_handler(
           servicer.DetectStream,
           request_deserializer=serving__pb2.DetectionRequest.FromString,
-          response_serializer=serving__pb2.Object.SerializeToString,
+          response_serializer=serving__pb2.DetectionResponse.SerializeToString,
       ),
       'Detect': grpc.unary_unary_rpc_method_handler(
           servicer.Detect,
