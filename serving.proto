@@ -12,7 +12,9 @@ message DetectionResponse {
 
 message DetectionRequest {
     bytes image = 1;
-    Rectangle region = 2;
+
+    // region of interests
+    Rectangle roi = 2;
 }
 
 service ShapeDetection {
